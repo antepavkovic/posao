@@ -4,8 +4,8 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import Main
 from proizvod.models import Proizvod
 from profil.models import Profil
-def home(request):
-    return render(request,'home.html')
+def index(request):
+    return render(request,'index.html')
 
 def login(request):
     if request.method=="POST":
