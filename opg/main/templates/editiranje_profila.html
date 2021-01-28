@@ -1,0 +1,62 @@
+{% load static %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opgweb</title>
+    <style>
+        h1 {text-align: center;}
+      
+        .podaci{
+                
+            position: fixed;
+            top: 40%;
+            left: 40%;
+            margin-top: -50px;
+            margin-left: -100px;
+      
+        }
+        </style>
+</head>
+<body>
+   <img src="{% static 'opg.jpg' %}" style="width:150px;height:150px;">
+    <h1>Editiranje profila</h1>
+   <form enctype="multipart/form-data" method="post">
+       {% csrf_token %}
+{% for i in profil %}
+    <div class="podaci"style="width:500px;height:500px;border:1px solid #000;">Podaci
+        <br>
+        <label >Ime: </label>
+     
+        <input type="text"value="{{i.name}}"name="name" id="name">
+        <br>
+        <label >Prezime:</label>
+        
+        <input type="text"value="{{i.surname}}"name="surname" id="surname">
+        <br>
+        <label >Naziv OPG-a:</label>
+        
+        <input type="text"value="{{i.opg_name}}"name="opg_name" id="opg_name">
+        <br>
+
+        <label>Adresa:</label>
+
+        
+        <input type="text"value="{{i.adress}}"name="adress" id="adress">
+        <br>
+        <label>Telefon:</label>
+    
+        <input type="text"value="{{i.tele}}"name="tele" id="tele">
+        <br><br>
+        <a><button>Editiraj</button></a>
+    </div>
+       {%endfor%}
+       </form>
+</body>
+</html>
+
+{% else %}
+please login to see the page
+{% endif  %}

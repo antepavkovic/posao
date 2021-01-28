@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opgweb</title>
+   <style>
+    h1 {text-align: center;}
+  
+    .podaci{
+            
+        position: fixed;
+        top: 40%;
+        left: 40%;
+        margin-top: -50px;
+        margin-left: -100px;
+  
+    }
+    </style>
+</head>
+<body>
+    <img src="{% static 'opg.jpg' %}" style="width:150px;height:150px;">
+    <h1>Registracija novog korisnika i OPG-a</h1>
+    <form method="post"enctype="multipart/form-data">
+       {% csrf_token %}
+    <div class="podaci"style="width:500px;height:500px;border:1px solid #000;">Podaci
+        <br>
+        <input type="text"id="ime" name="ime">Ime
+        <br>
+        <input type="text"id="prezime" name="prezime">Prezime
+        <br>
+        <input type="text"id="naziv_opga" name="naziv_opga">Naziv OPG-a
+        <br>
+        <input type="text"id="adresa" name="adresa">Adresa
+        <br>
+        <input type="text"id="telefon" name="telefon">Telefon
+        <br>
+        <input type="email"id="email" name="email">Email(Korisničko ime)
+        <br>
+        <input type="email"id="potvrda_emaila" name="potvrda_emaila">Potvrda emaila
+        <br>
+        <input type="password"id="lozinka" name="lozinka">Lozinka
+        <br>
+        <br><br>
+        <button>Kreiraj korisnika</button>
+    </div>
+        </form>
+
+</body>
+</html>

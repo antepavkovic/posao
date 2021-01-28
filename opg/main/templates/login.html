@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opgweb</title>
+   <style>
+    h1 {text-align: center;}
+  
+    .podaci{
+            
+        position: fixed;
+        top: 40%;
+        left: 40%;
+        margin-top: -50px;
+        margin-left: -100px;
+  
+    }
+    </style>
+</head>
+<body>
+    <ul>
+          <li><a class="active" href="{% url 'proizvod' %}">Proizvodi</a></li>
+          <li><a href="{% url 'pregled_profila' %}">Profil</a></li>
+          <li><a href="{% url 'mylogout' %}">Odjava</a></li>
+
+        </ul>
+    <img src="{% static 'opg.jpg' %}" style="width:150px;height:150px;">
+    <form action="{% url 'login' %}"method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="podaci"style="width:500px;height:500px;border:1px solid #000;">
+        <br>
+        <input type="text" name="username"id="username">Korisničko ime
+        <br>
+        <input type="password"name="password"id="password">Lozinka
+        <br>
+        <br><br>
+        <button>Login</button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{% load static %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opgweb</title>
+</head>
+<body>
+    
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          border: 1px solid #e7e7e7;
+          background-color: #f3f3f3;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: #667;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #ddd;
+        }
+        
+        li a.active {
+          color: white;
+          background-color: #4CAF50;
+        }
+        .button {
+    position: absolute;
+    top: 300%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+        </style>
+        </head>
+        <body>
+        
+        <ul>
+          <li><a class="active" href="{% url 'proizvod' %}">Proizvodi</a></li>
+          <li><a href="{% url 'pregled_profila' %}">Profil</a></li>
+          <li><a href="{% url 'mylogout' %}">Odjava</a></li>
+
+        </ul>
+        <img src="{% static 'opg.jpg' %}" style="width:150px;height:150px;">
+        <br>
+      <a href="dodavanje_proizvoda"><button> >Dodaj novi proizvod </button></a>
+<br><br><br><br>
+
+      <table>
+
+          <tr>
+         <th>Naziv proizvoda</th>
+          <th>Kategorija proizvoda</th>
+          <th><a href="">Detalji</a></th>
+          <th><a href="">Brisanje</a></th>
+          </tr>
+
+{% for i in proizvod%}
+          <tr>
+
+       <td>{{ i.ime_proizvoda }}</td>
+          <td>{{ i.kategorija_proizvoda }}</td>
+          <td><a href="{% url 'editiranje_proizvoda' pk=i.pk %}">Editiranje proizvoda</a></td>
+          <td><a href="{% url 'proizvod_delete' pk=i.pk %}">Brisanje</a></td>
+
+              </tr>
+           {% endfor %}
+
+      </table>
+
+</body>
+</html>
+
+{% else %}
+please login to see the page
+{% endif  %}

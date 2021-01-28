@@ -1,0 +1,85 @@
+{% load static %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opgweb</title>
+</head>
+<body>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          border: 1px solid #e7e7e7;
+          background-color: #f3f3f3;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: #667;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #ddd;
+        }
+        
+        li a.active {
+          color: white;
+          background-color: #4CAF50;
+        }
+        .button {
+    position: absolute;
+    top: 300%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+        </style>
+        </head>
+        <body>
+        
+         <ul>
+          <li><a class="active" href="{% url 'proizvod' %}">Proizvodi</a></li>
+          <li><a href="{% url 'pregled_profila' %}">Profil</a></li>
+          <li><a href="{% url 'mylogout' %}">Odjava</a></li>
+
+        </ul>
+        <img src="{% static 'opg.jpg' %}" style="width:150px;height:150px;">
+        <br>
+    <form  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Dodavanje proizvoda</h1>
+        <div class="podaci"style="width:500px;height:500px;border:1px solid #000;">Podaci
+            <br><br><br>
+            <input type="text" id="ime_proizvoda"name="ime_proizvoda">Ime proizvoda:
+            <br><br><br>
+            <label for="cars">Kategorija proizvoda:</label>
+
+            <select id="kategorija_proizvoda" name="kategorija_proizvoda">
+            <option value="Mlječni">Mlječni</option>
+            <option value="Povrće">Povrće</option>
+            <option value="Voće">Voće</option>
+        
+            </select>
+            <br>
+            <br><br>
+            <button>Ažuriraj</button>
+        </div>
+    </form>
+</body>
+</html>
+{% else %}
+please login to see the page
+{% endif  %}

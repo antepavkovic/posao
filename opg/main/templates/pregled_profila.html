@@ -1,0 +1,67 @@
+{% load static %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opgweb</title>
+    <style>
+        h1 {text-align: center;}
+      
+        .podaci{
+                
+            position: fixed;
+            top: 40%;
+            left: 40%;
+            margin-top: -50px;
+            margin-left: -100px;
+      
+        }
+        </style>
+</head>
+<body>
+ <ul>
+          <li><a class="active" href="{% url 'proizvod' %}">Proizvodi</a></li>
+          <li><a href="{% url 'pregled_profila' %}">Profil</a></li>
+          <li><a href="{% url 'mylogout' %}">Odjava</a></li>
+
+        </ul>
+    <img src="{% static 'opg.jpg' %}" style="width:150px;height:150px;">
+    <h1>Pregled profila</h1>
+ {%for i in profil%}
+    <div class="podaci"style="width:500px;height:500px;border:1px solid #000;">Podaci
+        <br>
+
+        <label for="">Ime: </label> 
+     
+        <label for="">{{i.name}}</label>
+        <br>
+        <label for="">Prezime:</label> 
+        
+        <label for="">{{i.surname}}</label>
+        <br>
+        <label for="">Naziv OPG-a:</label> 
+        
+        <label for="">{{i.opg_name}}</label>
+        <br>
+
+        <label for="">Adresa:</label> 
+
+        
+        <label for="">{{i.adress}}</label>
+        <br>
+        <label for="">Telefon:</label> 
+    
+        <label for="">{{i.tele}}</label>
+        <br><br>
+
+        <button><a href="{% url 'editiranje_profila' %}">Editiranje profila </a></button>
+    </div>
+{%endfor%}
+</body>
+
+</html>
+{% else %}
+please login to see the page
+{% endif  %}
